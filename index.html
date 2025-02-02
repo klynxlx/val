@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #ed8dc0;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    button {
+      font-size: 20px;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .yes-button {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .no-button {
+      background-color: #f44336;
+      color: white;
+    }
+    img {
+      margin-top: 20px;
+      width: 300px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Will you be my Valentine?</h1>
+    <button class="yes-button" onclick="yesClicked()">Yes</button>
+    <button class="no-button" id="noButton" onclick="noClicked()">No</button>
+   
+  </div>
+  <img src="./images/cat.gif" alt="Happy Image">
+  <script>
+    let noClicks = 0;
+    const maxClicks = 5;
+
+    function yesClicked() {
+      window.location.href = "yes.html";
+    }
+
+    function noClicked() {
+      noClicks++;
+      const noButton = document.getElementById("noButton");
+
+      if (noClicks <= maxClicks) {
+        noButton.style.transform = `scale(${1 - noClicks * 0.1})`;
+        noButton.textContent = "Are you sure?".repeat(noClicks);
+      } 
+
+      if (noClicks === maxClicks + 1) {
+        noButton.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
